@@ -14,8 +14,7 @@ import (
 const WILDCARDS = "0123456789abcdefghijklmnopqrstvwxyzABCDEFGHIJKLMNOPQRSTVWXYZ_`[]/^%?@><=-+*:;,.()#$!'{}~"
 
 func (a *API) getDeckHandler(c *gin.Context) {
-	name := c.Param("name")
-	name = strings.ToLower(name)
+	name := "test"
 
 	deck, ok := func() (string, bool) {
 		a.deckLock.RLock()
@@ -57,7 +56,7 @@ func (a *API) getDeckHandler(c *gin.Context) {
 		result.WriteString("\n")
 	}
 
-	c.Data(200, "text/plain", []byte(result.String()))
+	println(result.String())
 }
 
 func escapeRegexp(s string) string {
